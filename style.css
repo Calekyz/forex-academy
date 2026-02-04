@@ -7,26 +7,31 @@
 
 /* BODY */
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: #e5e7eb;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #111827;
   line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
 /* NAVBAR */
 nav {
-  background: #020617;
+  background-color: #ffffff;
   padding: 15px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  border-bottom: 2px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 nav h1 {
-  color: #38bdf8;
-  font-size: 1.4rem;
+  color: #1e3a8a; /* vibrant blue */
+  font-size: 1.6rem;
   letter-spacing: 1px;
+  font-weight: bold;
 }
 
 nav ul {
@@ -37,32 +42,33 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #e5e7eb;
-  font-weight: 500;
-  padding: 8px 14px;
-  border-radius: 20px;
+  color: #111827;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
   transition: 0.3s;
 }
 
 nav ul li a:hover {
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
-  color: #020617;
+  background: linear-gradient(135deg, #facc15, #fcd34d); /* vibrant gold hover */
+  color: #111827;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
 }
 
 /* HERO */
 .hero {
   min-height: 90vh;
-  background: linear-gradient(rgba(2,6,23,0.8), rgba(2,6,23,0.95)),
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)),
               url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3");
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 120px 10%;
+  padding: 140px 10%;
 }
 
 .hero h2 {
   font-size: 3rem;
-  color: #facc15;
+  color: #1e3a8a; /* vibrant blue */
   margin-bottom: 20px;
 }
 
@@ -70,35 +76,39 @@ nav ul li a:hover {
   font-size: 1.2rem;
   max-width: 700px;
   margin: auto 0 40px;
-  color: #93c5fd;
+  color: #6b7280; /* muted gray for readability */
 }
 
 /* BUTTONS */
 .btn {
   display: inline-block;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 14px 36px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #020617;
   font-weight: bold;
   text-decoration: none;
   border-radius: 30px;
-  transition: 0.3s;
+  transition: 0.4s;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.btn.gold {
+  background: linear-gradient(135deg, #facc15, #fcd34d);
+  color: #111827;
+}
+
+.btn.blue {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+}
+
+.btn.green {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #ffffff;
 }
 
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
-}
-
-.btn.blue {
-  background: linear-gradient(135deg, #2563eb, #38bdf8);
-  color: white;
-}
-
-.btn.gold {
-  background: linear-gradient(135deg, #facc15, #fde047);
-  color: #020617;
+  box-shadow: 0 0 25px rgba(250,204,21,0.5);
 }
 
 /* SECTIONS */
@@ -116,27 +126,27 @@ section {
 }
 
 .card {
-  background: #020617;
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
   padding: 30px;
-  width: 280px;
+  width: 300px;
   transition: 0.3s;
+  text-align: center;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); /* blue glow */
 }
 
 .card h3 {
-  color: #38bdf8;
+  color: #2563eb; /* vibrant blue */
   margin-bottom: 15px;
 }
 
-.card p {
-  color: #e5e7eb;
-  margin-bottom: 20px;
+.card p, .card li {
+  color: #111827;
 }
 
 .card ul {
@@ -147,27 +157,31 @@ section {
 
 .card ul li {
   margin: 8px 0;
-  color: #94a3b8;
   font-size: 0.95rem;
 }
 
-/* CTA / ENROLL */
-.cta {
-  background: linear-gradient(135deg, #020617, #0f172a);
-  padding: 80px 10%;
-  text-align: center;
-  border-top: 1px solid rgba(250,204,21,0.2);
-  border-bottom: 1px solid rgba(250,204,21,0.2);
+/* PRICING SECTION */
+#pricing {
+  background-color: #f3f4f6;
 }
 
-.cta h2 {
-  color: #facc15;
+/* ENROLL / CONTACT */
+.cta, #enroll {
+  background-color: #ffffff;
+  padding: 80px 10%;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cta h2, #enroll h2 {
+  color: #f59e0b; /* gold accent */
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.cta p {
-  color: #e5e7eb;
+.cta p, #enroll p {
+  color: #374151;
   font-size: 1.1rem;
   margin-bottom: 40px;
 }
@@ -185,24 +199,72 @@ section {
 
 /* DISCLAIMER */
 .disclaimer {
-  background: #000;
+  background: #f3f4f6;
   padding: 60px 10%;
   text-align: center;
 }
 
 .disclaimer p {
-  color: #94a3b8;
+  color: #6b7280;
   max-width: 900px;
   margin: auto 0 15px;
   font-size: 0.95rem;
 }
 
+/* MARKET UPDATES SECTION */
+#market-updates {
+  background: #ffffff;
+  color: #111827;
+  padding: 80px 10%;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+#market-updates h2 {
+  color: #2563eb; /* blue accent */
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.ticker {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.ticker-item {
+  background: #f3f4f6;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(59,130,246,0.1);
+  transition: 0.3s;
+}
+
+.ticker-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(59,130,246,0.25);
+}
+
+.ticker-item h4 {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.ticker-item p {
+  color: #16a34a; /* green for positive, can be dynamic */
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 /* FOOTER */
 footer {
-  background: #020617;
+  background: #ffffff;
   text-align: center;
   padding: 20px;
-  color: #64748b;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
 }
 
 /* MOBILE */
@@ -213,5 +275,10 @@ footer {
 
   .hero h2 {
     font-size: 2.2rem;
+  }
+
+  .cards, .ticker, .contact-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
