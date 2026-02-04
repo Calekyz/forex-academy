@@ -7,28 +7,28 @@
 
 body {
   font-family: 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f9f9f9;
-  color: #111827;
+  background-color: #ffffff; /* White base */
+  color: #111111;
   line-height: 1.6;
   scroll-behavior: smooth;
 }
 
 /* NAVBAR */
 nav {
-  background-color: #ffffff;
+  background-color: #000000; /* Black navbar */
   padding: 15px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #e5e7eb;
   position: sticky;
   top: 0;
   z-index: 999;
+  border-bottom: 3px solid #ff6700; /* Orange border */
 }
 
 nav h1 {
-  color: #1e3a8a;
-  font-size: 1.6rem;
+  color: #ffffff;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
@@ -40,24 +40,24 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #111827;
+  color: #ffffff;
   font-weight: 600;
   padding: 10px 16px;
-  border-radius: 12px;
+  border-radius: 10px;
   transition: 0.3s;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-  background: linear-gradient(135deg, #facc15, #fcd34d);
-  color: #111827;
-  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+  background: linear-gradient(135deg, #16a34a, #f59e0b); /* green to orange */
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(21, 163, 21, 0.4);
 }
 
 /* HERO SECTION */
 .hero {
   min-height: 80vh;
-  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)), 
+  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
               url("assets/images/hero-home.jpg") center/cover no-repeat;
   text-align: center;
   padding: 120px 10%;
@@ -71,7 +71,7 @@ nav ul li a.active {
 
 .hero h2 {
   font-size: 3rem;
-  color: #1e3a8a;
+  color: #ff6700; /* Orange heading */
   margin-bottom: 20px;
 }
 
@@ -79,7 +79,7 @@ nav ul li a.active {
   font-size: 1.2rem;
   max-width: 700px;
   margin-bottom: 40px;
-  color: #374151;
+  color: #111111;
 }
 
 /* BUTTONS */
@@ -91,22 +91,27 @@ nav ul li a.active {
   text-decoration: none;
   border-radius: 30px;
   transition: 0.4s;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
-.btn.gold {
-  background: linear-gradient(135deg, #facc15, #fcd34d);
-  color: #111827;
+.btn.green {
+  background: linear-gradient(135deg, #16a34a, #22c55e); /* Green gradient */
+  color: #ffffff;
 }
 
-.btn.blue {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+.btn.red {
+  background: linear-gradient(135deg, #dc2626, #ef4444); /* Red gradient */
+  color: #ffffff;
+}
+
+.btn.orange {
+  background: linear-gradient(135deg, #f97316, #ff6700); /* Orange gradient */
   color: #ffffff;
 }
 
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(250,204,21,0.5);
+  box-shadow: 0 0 25px rgba(250,103,0,0.5);
 }
 
 /* SECTIONS */
@@ -125,48 +130,104 @@ section {
 }
 
 .card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: url("assets/images/card-bg.jpg") center/cover no-repeat; /* Placeholder background image */
   border-radius: 16px;
   padding: 30px;
   width: 300px;
   transition: 0.3s;
   text-align: center;
+  color: #ffffff;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(59,130,246,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .card h3 {
-  color: #2563eb;
+  color: #ff6700; /* Orange title */
   margin-bottom: 15px;
 }
 
 .card p {
-  color: #111827;
+  color: #ffffff;
 }
 
 .card img {
   width: 80px;
   height: 80px;
   margin-bottom: 15px;
+  border-radius: 50%;
+  border: 2px solid #16a34a; /* green border */
+}
+
+/* MARKET TICKER */
+.ticker {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+}
+
+.ticker-item {
+  background: #000000; /* Black ticker background */
+  padding: 20px 30px;
+  border-radius: 12px;
+  min-width: 120px;
+  transition: 0.3s;
+  color: #ffffff;
+  animation: ticker-slide 15s linear infinite;
+}
+
+.ticker-item h4 {
+  color: #16a34a; /* Green title */
+  margin-bottom: 10px;
+}
+
+.ticker-item p {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #ef4444; /* Red values for negative or highlight */
+}
+
+/* ticker-slide animation */
+@keyframes ticker-slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* CTA SECTION */
+.cta {
+  background-color: #ffffff;
+  padding: 60px 10%;
+  text-align: center;
+  border-top: 1px solid #f97316; /* Orange line */
+  border-bottom: 1px solid #16a34a; /* Green line */
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 /* FOOTER */
 footer {
-  background: #ffffff;
+  background: #000000;
   text-align: center;
   padding: 20px;
-  color: #6b7280;
-  border-top: 1px solid #e5e7eb;
+  color: #ffffff;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
   nav ul { display: none; }
-  .cards {
+  .cards, .ticker, .contact-buttons {
     flex-direction: column;
     align-items: center;
   }
