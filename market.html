@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Market - Elite Forex Academy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <h1>Elite Forex</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="enroll.html">Enroll</a></li>
+    <li><a href="market.html" class="active">Market</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="market">
+  <h2>Live Market Updates</h2>
+  <p>Stay updated with real-time Forex and Crypto prices.</p>
+</section>
+
+<section id="market-updates">
+  <div class="ticker" id="market-ticker"></div>
+</section>
+
+<script>
+async function loadLivePrices() {
+  const tickerContainer = document.getElementById("market-ticker");
+  tickerContainer.innerHTML = "";
+  try {
+    const cryptoRes = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true'
+    );
+    const cryptoData = await cryptoRes.json();
+    ["bitcoin","ethereum"].forEach(id => {
+      const price = cryptoData[id].usd;
+      const change = cryptoData[id].usd_24h_change.toFixed(2);
+      let item = document.createElement("div");
+      item.classList.add("ticker-item");
+      item.innerHTML = `<h4>${id.toUpperCase()}</h4><p style="color:${change>=0?'#16a34a':'#ef4444'}">$${price} (${change}%)</p>`;
+      tickerContainer.appendChild(item);
+    });
+
+    const forexRes = await fetch(
+      'https://www.freeforexapi.com/api/live?pairs=EURUSD,GBPUSD,USDJPY'
+    );
+    const forexData = await forexRes.json();
+    const forexPairs = { EURUSD:"EUR/USD", GBPUSD:"GBP/USD", USDJPY:"USD/JPY" };
+    Object.keys(forexData.rates).forEach(pair => {
+      const rate = forexData.rates[pair].rate.toFixed(4);
+      let item = document.createElement("div");
+      item.classList.add("ticker-item");
+      item.innerHTML = `<h4>${forexPairs[pair]}</h4><p style="color:#2563eb">${rate}</p>`;
+      tickerContainer.appendChild(item);
+    });
+
+  } catch(err) {
+    console.error(err);
+    tickerContainer.innerHTML="<p>Unable to load market data.</p>";
+  }
+}
+
+loadLivePrices();
+setInterval(loadLivePrices, 60000);
+</script>
+
+<footer>
+  <p>© 2026 Elite Forex Academy</p>
+</footer>
+
+</body>
+</html>
