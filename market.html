@@ -2,65 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Market | Live Updates</title>
+  <title>Market Updates | AFX Traders</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="logo">AFX PROTRADER EA</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="tools.html">Tools</a></li>
-    <li><a href="market.html" class="active">Market</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="enroll.html" class="cta">Enroll</a></li>
-  </ul>
-</nav>
-
-<section class="page-header">
-  <h1>Live Market Updates</h1>
-  <p>Simulated Forex & Crypto prices.</p>
+<nav class="navbar">...</nav>
+<section class="hero">
+  <h1>Market Insights</h1>
+  <p>Forex, crypto, and Deriv market commentary.</p>
 </section>
-
-<section>
-  <div class="market-grid" id="market"></div>
-</section>
-
-<footer>
-  <p>© 2026 Elite Forex Academy</p>
-</footer>
-
-<script>
-const data = [
-  { name: "EUR/USD", price: 1.1245 },
-  { name: "GBP/USD", price: 1.2312 },
-  { name: "BTC/USD", price: 35240 },
-  { name: "XAU/USD", price: 2034 }
-];
-
-const market = document.getElementById("market");
-
-function render() {
-  market.innerHTML = "";
-  data.forEach(item => {
-    const change = (Math.random() - 0.5) * 0.01;
-    item.price += change;
-    const cls = change >= 0 ? "up" : "down";
-
-    market.innerHTML += `
-      <div class="market-card">
-        <h3>${item.name}</h3>
-        <p class="${cls}">${item.price.toFixed(4)}</p>
-      </div>
-    `;
-  });
-}
-
-render();
-setInterval(render, 2000);
-</script>
-
+<footer>© 2026 AFX Traders</footer>
 </body>
 </html>
