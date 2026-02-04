@@ -22,7 +22,7 @@
 <!-- HERO -->
 <section class="hero" id="market">
   <h2>Live Market Updates</h2>
-  <p>Stay updated with real-time Forex and Crypto prices in a professional and easy-to-read format.</p>
+  <p>Simulated Forex and Crypto prices to help you track the market visually.</p>
 </section>
 
 <!-- MARKET UPDATES -->
@@ -31,7 +31,6 @@
   <div class="ticker" id="market-ticker"></div>
 </section>
 
-<!-- SIMULATED MARKET JS -->
 <script>
 const prices = [
   {name: 'EUR/USD', value: 1.1234, color:'#2563eb'},
@@ -43,26 +42,21 @@ const prices = [
 
 const ticker = document.getElementById('market-ticker');
 
-prices.forEach(p => {
-  const item = document.createElement('div');
-  item.classList.add('ticker-item');
-  item.innerHTML = `<h4>${p.name}</h4><p style="color:${p.color}">${p.value}</p>`;
-  ticker.appendChild(item);
-});
-
-// Optional: update values every 10s to simulate live movement
-setInterval(() => {
+function updateTicker() {
   ticker.innerHTML = '';
   prices.forEach(p => {
-    // randomize price slightly for simulation
-    let fluctuation = (Math.random() - 0.5) * 0.01; 
+    // Random small fluctuation
+    let fluctuation = (Math.random() - 0.5) * 0.01;
     p.value = (p.value * (1 + fluctuation)).toFixed(4);
     const item = document.createElement('div');
     item.classList.add('ticker-item');
     item.innerHTML = `<h4>${p.name}</h4><p style="color:${p.color}">${p.value}</p>`;
     ticker.appendChild(item);
   });
-}, 10000);
+}
+
+updateTicker();
+setInterval(updateTicker, 10000); // refresh every 10s
 </script>
 
 <!-- FOOTER -->
