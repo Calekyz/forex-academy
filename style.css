@@ -49,14 +49,11 @@ nav ul li a:hover {
   color: #020617;
 }
 
-/* HERO / HOME */
+/* HERO */
 .hero {
   min-height: 90vh;
-  background: linear-gradient(
-      rgba(2, 6, 23, 0.8),
-      rgba(2, 6, 23, 0.95)
-    ),
-    url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3");
+  background: linear-gradient(rgba(2,6,23,0.8), rgba(2,6,23,0.95)),
+              url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3");
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -72,7 +69,7 @@ nav ul li a:hover {
 .hero p {
   font-size: 1.2rem;
   max-width: 700px;
-  margin: auto;
+  margin: auto 0 40px;
   color: #93c5fd;
 }
 
@@ -119,7 +116,7 @@ section {
 }
 
 .card {
-  background: linear-gradient(180deg, #020617, #020617);
+  background: #020617;
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 16px;
   padding: 30px;
@@ -134,80 +131,87 @@ section {
 
 .card h3 {
   color: #38bdf8;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #94a3b8;
-}
-
-/* CTA */
-.cta {
-  background: linear-gradient(135deg, #020617, #020617);
-  border-top: 1px solid rgba(250, 204, 21, 0.3);
-  border-bottom: 1px solid rgba(250, 204, 21, 0.3);
-}
-
-.cta h2 {
-/* PRICING SECTION */
-#pricing {
-  background: linear-gradient(135deg, #0f172a, #020617);
-  padding: 80px 10%;
-  text-align: center;
-}
-
-#pricing h2 {
-  font-size: 2.2rem;
-  color: #facc15;
-  margin-bottom: 50px;
-}
-
-#pricing .cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-#pricing .card {
-  background: #020617;
-  border: 1px solid rgba(250, 204, 21, 0.2);
-  padding: 30px;
-  width: 280px;
-  border-radius: 16px;
-  transition: 0.3s;
-  text-align: center;
-}
-
-#pricing .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
-}
-
-#pricing .card h3 {
-  color: #38bdf8;
   margin-bottom: 15px;
 }
 
-#pricing .card p {
-  font-size: 1rem;
-  margin-bottom: 20px;
+.card p {
   color: #e5e7eb;
+  margin-bottom: 20px;
 }
 
-#pricing .card ul {
+.card ul {
   list-style: none;
   padding: 0;
   margin-bottom: 20px;
 }
 
-#pricing .card ul li {
+.card ul li {
   margin: 8px 0;
   color: #94a3b8;
   font-size: 0.95rem;
 }
 
-#pricing .card .btn {
-  width: 100%;
+/* CTA / ENROLL */
+.cta {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  padding: 80px 10%;
   text-align: center;
+  border-top: 1px solid rgba(250,204,21,0.2);
+  border-bottom: 1px solid rgba(250,204,21,0.2);
+}
+
+.cta h2 {
+  color: #facc15;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  color: #e5e7eb;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-buttons .btn {
+  min-width: 180px;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+  background: #000;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.disclaimer p {
+  color: #94a3b8;
+  max-width: 900px;
+  margin: auto 0 15px;
+  font-size: 0.95rem;
+}
+
+/* FOOTER */
+footer {
+  background: #020617;
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+
+  .hero h2 {
+    font-size: 2.2rem;
+  }
 }
