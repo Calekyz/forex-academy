@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment | AFX PROTRADER EA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">AFX PROTRADER EA</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="payment.html" class="active">Payment</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <h1>Secure Payment</h1>
+  <p>Select your product and complete payment securely.</p>
+</section>
+
+<section>
+  <div class="grid">
+
+    <div class="card">
+      <h3>AFX PROTRADER EA</h3>
+      <p>Fully automated Forex trading robot.</p>
+      <p><strong>$299</strong></p>
+      <a href="#" class="btn green" onclick="payEA()">Buy Now</a>
+    </div>
+
+    <div class="card">
+      <h3>Signals Subscription</h3>
+      <p>High-confidence trade alerts.</p>
+      <p><strong>$49 / month</strong></p>
+      <a href="#" class="btn orange" onclick="paySignals()">Subscribe</a>
+    </div>
+
+    <div class="card">
+      <h3>Mentorship Program</h3>
+      <p>1-on-1 professional guidance.</p>
+      <p><strong>$499</strong></p>
+      <a href="#" class="btn black" onclick="payMentorship()">Enroll</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Elite Forex Academy</p>
+</footer>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function payEA() {
+  paystackPay(299, "AFX PROTRADER EA");
+}
+function paySignals() {
+  paystackPay(49, "AFX Signals");
+}
+function payMentorship() {
+  paystackPay(499, "AFX Mentorship");
+}
+
+function paystackPay(amount, product) {
+  let handler = PaystackPop.setup({
+    key: 'YOUR_PUBLIC_KEY_HERE',
+    email: 'customer@email.com',
+    amount: amount * 100,
+    currency: 'USD',
+    metadata: {
+      custom_fields: [
+        { display_name: "Product", variable_name: "product", value: product }
+      ]
+    },
+    callback: function(response) {
+      alert('Payment successful! Reference: ' + response.reference);
+    },
+    onClose: function() {
+      alert('Transaction cancelled');
+    }
+  });
+  handler.openIframe();
+}
+</script>
+
+</body>
+</html>
