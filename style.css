@@ -27,7 +27,7 @@ nav {
 }
 
 nav h1 {
-  color: #1e3a8a; 
+  color: #1e3a8a;
   font-size: 1.6rem;
   font-weight: bold;
 }
@@ -54,11 +54,11 @@ nav ul li a.active {
   box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
 }
 
-/* HERO SECTIONS */
+/* HERO SECTION */
 .hero {
   min-height: 80vh;
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)), 
+              url("assets/images/hero-home.jpg") center/cover no-repeat;
   text-align: center;
   padding: 120px 10%;
   display: flex;
@@ -71,7 +71,7 @@ nav ul li a.active {
 
 .hero h2 {
   font-size: 3rem;
-  color: #1e3a8a; 
+  color: #1e3a8a;
   margin-bottom: 20px;
 }
 
@@ -101,11 +101,6 @@ nav ul li a.active {
 
 .btn.blue {
   background: linear-gradient(135deg, #2563eb, #3b82f6);
-  color: #ffffff;
-}
-
-.btn.green {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
   color: #ffffff;
 }
 
@@ -149,7 +144,7 @@ section {
   margin-bottom: 15px;
 }
 
-.card p, .card li {
+.card p {
   color: #111827;
 }
 
@@ -157,76 +152,6 @@ section {
   width: 80px;
   height: 80px;
   margin-bottom: 15px;
-}
-
-/* MARKET UPDATES */
-#market-updates {
-  background: #ffffff;
-  padding: 50px 10%;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-}
-
-#market-updates h2 {
-  color: #2563eb;
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
-
-.ticker {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  overflow: hidden;
-  position: relative;
-}
-
-.ticker-item {
-  background: #f3f4f6;
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(59,130,246,0.1);
-  transition: 0.3s;
-  min-width: 120px;
-  animation: ticker-slide 15s linear infinite;
-}
-
-.ticker-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(59,130,246,0.25);
-}
-
-.ticker-item h4 {
-  color: #2563eb;
-  margin-bottom: 10px;
-}
-
-.ticker-item p {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* ticker-slide animation for horizontal scroll effect */
-@keyframes ticker-slide {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-/* CTA SECTION */
-.cta {
-  background-color: #ffffff;
-  padding: 60px 10%;
-  text-align: center;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
 /* FOOTER */
@@ -241,7 +166,7 @@ footer {
 /* RESPONSIVE */
 @media (max-width: 768px) {
   nav ul { display: none; }
-  .cards, .ticker, .contact-buttons {
+  .cards {
     flex-direction: column;
     align-items: center;
   }
