@@ -18,33 +18,46 @@
 </nav>
 
 <section class="page-header">
-  <h1>Secure Payment</h1>
-  <p>Select your product and complete payment securely.</p>
+  <h1>Manual Payment (M-Pesa)</h1>
+  <p>Pay via M-Pesa Till and upload proof for approval.</p>
 </section>
 
 <section>
-  <div class="grid">
+  <div class="payment-box">
 
-    <div class="card">
-      <h3>AFX PROTRADER EA</h3>
-      <p>Fully automated Forex trading robot.</p>
-      <p><strong>$299</strong></p>
-      <a href="#" class="btn green" onclick="payEA()">Buy Now</a>
+    <div class="payment-instructions">
+      <h3>📲 M-Pesa Payment Instructions</h3>
+      <p><strong>Till Number:</strong> <span style="color:green;">REPLACE_WITH_YOUR_TILL</span></p>
+      <p><strong>Business Name:</strong> AFX PROTRADER EA</p>
+      <p><strong>Reference:</strong> Your Full Name</p>
+      <p>After payment, upload proof below.</p>
     </div>
 
-    <div class="card">
-      <h3>Signals Subscription</h3>
-      <p>High-confidence trade alerts.</p>
-      <p><strong>$49 / month</strong></p>
-      <a href="#" class="btn orange" onclick="paySignals()">Subscribe</a>
-    </div>
+    <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST" enctype="multipart/form-data">
 
-    <div class="card">
-      <h3>Mentorship Program</h3>
-      <p>1-on-1 professional guidance.</p>
-      <p><strong>$499</strong></p>
-      <a href="#" class="btn black" onclick="payMentorship()">Enroll</a>
-    </div>
+      <!-- Hidden settings -->
+      <input type="hidden" name="_subject" value="New Payment Proof - AFX PROTRADER EA">
+      <input type="hidden" name="_captcha" value="false">
+
+      <label>Full Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Select Product</label>
+      <select name="product" required>
+        <option>AFX PROTRADER EA</option>
+        <option>Signals Subscription</option>
+        <option>Mentorship Program</option>
+      </select>
+
+      <label>Upload Payment Proof</label>
+      <input type="file" name="attachment" accept="image/*" required>
+
+      <button type="submit" class="btn green">Submit Proof</button>
+
+    </form>
 
   </div>
 </section>
@@ -52,40 +65,6 @@
 <footer>
   <p>© 2026 Elite Forex Academy</p>
 </footer>
-
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<script>
-function payEA() {
-  paystackPay(299, "AFX PROTRADER EA");
-}
-function paySignals() {
-  paystackPay(49, "AFX Signals");
-}
-function payMentorship() {
-  paystackPay(499, "AFX Mentorship");
-}
-
-function paystackPay(amount, product) {
-  let handler = PaystackPop.setup({
-    key: 'YOUR_PUBLIC_KEY_HERE',
-    email: 'customer@email.com',
-    amount: amount * 100,
-    currency: 'USD',
-    metadata: {
-      custom_fields: [
-        { display_name: "Product", variable_name: "product", value: product }
-      ]
-    },
-    callback: function(response) {
-      alert('Payment successful! Reference: ' + response.reference);
-    },
-    onClose: function() {
-      alert('Transaction cancelled');
-    }
-  });
-  handler.openIframe();
-}
-</script>
 
 </body>
 </html>
