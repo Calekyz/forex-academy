@@ -2,67 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Market - Elite Forex Academy</title>
+  <title>Market | Live Updates</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <h1>Elite Forex</h1>
-  <ul>
+<nav class="navbar">
+  <div class="logo">AFX PROTRADER EA</div>
+  <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="enroll.html">Enroll</a></li>
+    <li><a href="tools.html">Tools</a></li>
     <li><a href="market.html" class="active">Market</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="enroll.html" class="cta">Enroll</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="market">
-  <h2>Live Market Updates</h2>
-  <p>Simulated Forex and Crypto prices to help you track the market visually.</p>
+<section class="page-header">
+  <h1>Live Market Updates</h1>
+  <p>Simulated Forex & Crypto prices.</p>
 </section>
 
-<!-- MARKET UPDATES -->
-<section id="market-updates">
-  <h2>Market Ticker</h2>
-  <div class="ticker" id="market-ticker"></div>
+<section>
+  <div class="market-grid" id="market"></div>
 </section>
 
-<script>
-const prices = [
-  {name: 'EUR/USD', value: 1.1234, color:'#2563eb'},
-  {name: 'GBP/USD', value: 1.2345, color:'#16a34a'},
-  {name: 'USD/JPY', value: 134.56, color:'#2563eb'},
-  {name: 'BTC/USD', value: 35000, color:'#f59e0b'},
-  {name: 'ETH/USD', value: 2500, color:'#3b82f6'}
-];
-
-const ticker = document.getElementById('market-ticker');
-
-function updateTicker() {
-  ticker.innerHTML = '';
-  prices.forEach(p => {
-    // Random small fluctuation
-    let fluctuation = (Math.random() - 0.5) * 0.01;
-    p.value = (p.value * (1 + fluctuation)).toFixed(4);
-    const item = document.createElement('div');
-    item.classList.add('ticker-item');
-    item.innerHTML = `<h4>${p.name}</h4><p style="color:${p.color}">${p.value}</p>`;
-    ticker.appendChild(item);
-  });
-}
-
-updateTicker();
-setInterval(updateTicker, 10000); // refresh every 10s
-</script>
-
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Elite Forex Academy</p>
 </footer>
+
+<script>
+const data = [
+  { name: "EUR/USD", price: 1.1245 },
+  { name: "GBP/USD", price: 1.2312 },
+  { name: "BTC/USD", price: 35240 },
+  { name: "XAU/USD", price: 2034 }
+];
+
+const market = document.getElementById("market");
+
+function render() {
+  market.innerHTML = "";
+  data.forEach(item => {
+    const change = (Math.random() - 0.5) * 0.01;
+    item.price += change;
+    const cls = change >= 0 ? "up" : "down";
+
+    market.innerHTML += `
+      <div class="market-card">
+        <h3>${item.name}</h3>
+        <p class="${cls}">${item.price.toFixed(4)}</p>
+      </div>
+    `;
+  });
+}
+
+render();
+setInterval(render, 2000);
+</script>
 
 </body>
 </html>
