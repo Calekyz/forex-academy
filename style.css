@@ -149,3 +149,65 @@ section {
 }
 
 .cta h2 {
+/* PRICING SECTION */
+#pricing {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  padding: 80px 10%;
+  text-align: center;
+}
+
+#pricing h2 {
+  font-size: 2.2rem;
+  color: #facc15;
+  margin-bottom: 50px;
+}
+
+#pricing .cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+#pricing .card {
+  background: #020617;
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  padding: 30px;
+  width: 280px;
+  border-radius: 16px;
+  transition: 0.3s;
+  text-align: center;
+}
+
+#pricing .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
+}
+
+#pricing .card h3 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+}
+
+#pricing .card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #e5e7eb;
+}
+
+#pricing .card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#pricing .card ul li {
+  margin: 8px 0;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+#pricing .card .btn {
+  width: 100%;
+  text-align: center;
+}
