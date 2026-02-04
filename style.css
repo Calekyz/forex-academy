@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* BODY */
+/* BODY & FONT */
 body {
   font-family: 'Segoe UI', 'Roboto', sans-serif;
   background-color: #f9f9f9;
@@ -28,7 +28,7 @@ nav {
 }
 
 nav h1 {
-  color: #1e3a8a; /* vibrant blue */
+  color: #1e3a8a; 
   font-size: 1.6rem;
   letter-spacing: 1px;
   font-weight: bold;
@@ -50,25 +50,29 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background: linear-gradient(135deg, #facc15, #fcd34d); /* vibrant gold hover */
+  background: linear-gradient(135deg, #facc15, #fcd34d);
   color: #111827;
   box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
 }
 
-/* HERO */
+/* HERO SECTIONS */
 .hero {
   min-height: 90vh;
-  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)),
-              url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3");
   background-size: cover;
   background-position: center;
   text-align: center;
   padding: 140px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  transition: background 0.5s;
 }
 
 .hero h2 {
   font-size: 3rem;
-  color: #1e3a8a; /* vibrant blue */
+  color: #1e3a8a; 
   margin-bottom: 20px;
 }
 
@@ -76,7 +80,28 @@ nav ul li a:hover {
   font-size: 1.2rem;
   max-width: 700px;
   margin: auto 0 40px;
-  color: #6b7280; /* muted gray for readability */
+  color: #6b7280;
+}
+
+/* HERO BACKGROUNDS */
+.hero#home {
+  background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)),
+              url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?crop=entropy&auto=format&fit=crop&w=1470&q=80");
+}
+
+.hero#courses {
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)),
+              url("https://images.unsplash.com/photo-1600180758895-5e0e1f1b4c09?crop=entropy&auto=format&fit=crop&w=1470&q=80");
+}
+
+.hero#mentorship {
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)),
+              url("https://images.unsplash.com/photo-1581092795363-0d0abf8b7e29?crop=entropy&auto=format&fit=crop&w=1470&q=80");
+}
+
+.hero#signals {
+  background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.95)),
+              url("https://images.unsplash.com/photo-1581092580497-ff1c4c72f57d?crop=entropy&auto=format&fit=crop&w=1470&q=80");
 }
 
 /* BUTTONS */
@@ -115,9 +140,9 @@ nav ul li a:hover {
 section {
   padding: 80px 10%;
   text-align: center;
+  position: relative;
 }
 
-/* CARDS */
 .cards {
   display: flex;
   gap: 30px;
@@ -125,6 +150,7 @@ section {
   flex-wrap: wrap;
 }
 
+/* CARDS */
 .card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -133,15 +159,16 @@ section {
   width: 300px;
   transition: 0.3s;
   text-align: center;
+  position: relative;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); /* blue glow */
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
 }
 
 .card h3 {
-  color: #2563eb; /* vibrant blue */
+  color: #2563eb;
   margin-bottom: 15px;
 }
 
@@ -149,15 +176,10 @@ section {
   color: #111827;
 }
 
-.card ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.card ul li {
-  margin: 8px 0;
-  font-size: 0.95rem;
+.card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
 }
 
 /* PRICING SECTION */
@@ -165,7 +187,7 @@ section {
   background-color: #f3f4f6;
 }
 
-/* ENROLL / CONTACT */
+/* CTA / ENROLL */
 .cta, #enroll {
   background-color: #ffffff;
   padding: 80px 10%;
@@ -175,7 +197,7 @@ section {
 }
 
 .cta h2, #enroll h2 {
-  color: #f59e0b; /* gold accent */
+  color: #f59e0b;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -211,7 +233,7 @@ section {
   font-size: 0.95rem;
 }
 
-/* MARKET UPDATES SECTION */
+/* LIVE MARKET UPDATES */
 #market-updates {
   background: #ffffff;
   color: #111827;
@@ -222,7 +244,7 @@ section {
 }
 
 #market-updates h2 {
-  color: #2563eb; /* blue accent */
+  color: #2563eb;
   margin-bottom: 40px;
   font-size: 2rem;
 }
@@ -253,7 +275,7 @@ section {
 }
 
 .ticker-item p {
-  color: #16a34a; /* green for positive, can be dynamic */
+  color: #16a34a; /* green for positive, can change dynamically */
   font-weight: bold;
   font-size: 1.1rem;
 }
