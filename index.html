@@ -11,27 +11,23 @@
   <nav>
     <h1>Elite Forex</h1>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="signals.html">Signals</a></li>
-      <li><a href="mentorship.html">Mentorship</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#enroll">Enroll</a></li>
+      <li><a href="#market-updates">Market</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="home">
     <h2>Trade Smart. Trade Aggressive.</h2>
-    <p>
-      Elite Forex Academy helps traders master the market with
-      structure, discipline, and high-probability strategies.
-    </p>
-
-    <a href="courses.html" class="btn gold">Get Started</a>
-    <a href="signals.html" class="btn blue">Join Signals</a>
+    <p>Elite Forex Academy helps traders master the market with structure, discipline, and high-probability strategies.</p>
+    <a href="#courses" class="btn gold">Get Started</a>
+    <a href="#market-updates" class="btn blue">Live Markets</a>
   </section>
 
-  <!-- PROGRAMS -->
+  <!-- PROGRAMS / COURSES -->
   <section id="courses">
     <h2>Our Programs</h2>
     <div class="cards">
@@ -68,3 +64,108 @@
       <div class="card">
         <h3>Premium Signals</h3>
         <p><strong>$149 / month</strong> – Receive daily trade setups</p>
+        <ul>
+          <li>High-Probability Setups</li>
+          <li>Telegram Access</li>
+          <li>Trade Explanations</li>
+        </ul>
+        <a href="https://t.me/calekyz254" class="btn blue" target="_blank">Join Now</a>
+      </div>
+
+      <div class="card">
+        <h3>1-on-1 Mentorship</h3>
+        <p><strong>$299</strong> – Personal coaching & account guidance</p>
+        <ul>
+          <li>Weekly Calls & Reviews</li>
+          <li>Custom Trading Plan</li>
+          <li>Psychology & Discipline</li>
+        </ul>
+        <a href="https://wa.me/254799045699" class="btn gold" target="_blank">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENROLL / CONTACT -->
+  <section id="enroll" class="cta">
+    <h2>Ready to Join Elite Forex Academy?</h2>
+    <p>Choose your program and start trading like a professional today!</p>
+    <div class="contact-buttons">
+      <a href="https://wa.me/254799045699" class="btn gold" target="_blank">Chat on WhatsApp</a>
+      <a href="https://t.me/calekyz254" class="btn blue" target="_blank">Join Telegram</a>
+    </div>
+  </section>
+
+  <!-- LIVE MARKET UPDATES -->
+  <section id="market-updates">
+    <h2>Live Market Updates</h2>
+    <div class="ticker" id="market-ticker"></div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="disclaimer">
+    <p>Trading forex and CFDs involves significant risk and may not be suitable for all investors. Past performance does not guarantee future results.</p>
+    <p>Elite Forex Academy does not guarantee profits. You are responsible for all trading decisions and outcomes.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Elite Forex Academy</p>
+  </footer>
+
+  <!-- LIVE MARKET JS -->
+  <script>
+  async function loadLivePrices() {
+    const tickerContainer = document.getElementById("market-ticker");
+    tickerContainer.innerHTML = "";
+
+    try {
+      // Crypto: CoinGecko
+      const cryptoRes = await fetch(
+        'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true'
+      );
+      const cryptoData = await cryptoRes.json();
+
+      ["bitcoin", "ethereum"].forEach(id => {
+        const price = cryptoData[id].usd;
+        const change = cryptoData[id].usd_24h_change.toFixed(2);
+        let item = document.createElement("div");
+        item.classList.add("ticker-item");
+        item.innerHTML = `
+          <h4>${id.toUpperCase()}</h4>
+          <p style="color:${change>=0?'#16a34a':'#ef4444'}">$${price} (${change}%)</p>
+        `;
+        tickerContainer.appendChild(item);
+      });
+
+      // Forex: FreeForexAPI
+      const forexRes = await fetch(
+        'https://www.freeforexapi.com/api/live?pairs=EURUSD,GBPUSD,USDJPY'
+      );
+      const forexData = await forexRes.json();
+      const forexPairs = { EURUSD: "EUR/USD", GBPUSD: "GBP/USD", USDJPY: "USD/JPY" };
+
+      Object.keys(forexData.rates).forEach(pair => {
+        const rate = forexData.rates[pair].rate.toFixed(4);
+        let item = document.createElement("div");
+        item.classList.add("ticker-item");
+        item.innerHTML = `
+          <h4>${forexPairs[pair] || pair}</h4>
+          <p style="color:#2563eb">${rate}</p>
+        `;
+        tickerContainer.appendChild(item);
+      });
+
+    } catch (err) {
+      console.error("Market API error", err);
+      tickerContainer.innerHTML = "<p>Unable to load market data at the moment.</p>";
+    }
+  }
+
+  // initial load
+  loadLivePrices();
+  // refresh every 60 seconds
+  setInterval(loadLivePrices, 60000);
+  </script>
+
+</body>
+</html>
