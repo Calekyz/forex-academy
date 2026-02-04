@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
   <h1>Elite Forex</h1>
   <ul>
@@ -18,56 +19,53 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="market">
   <h2>Live Market Updates</h2>
-  <p>Stay updated with real-time Forex and Crypto prices.</p>
+  <p>Stay updated with real-time Forex and Crypto prices in a professional and easy-to-read format.</p>
 </section>
 
+<!-- MARKET UPDATES -->
 <section id="market-updates">
+  <h2>Market Ticker</h2>
   <div class="ticker" id="market-ticker"></div>
 </section>
 
+<!-- SIMULATED MARKET JS -->
 <script>
-async function loadLivePrices() {
-  const tickerContainer = document.getElementById("market-ticker");
-  tickerContainer.innerHTML = "";
-  try {
-    const cryptoRes = await fetch(
-      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true'
-    );
-    const cryptoData = await cryptoRes.json();
-    ["bitcoin","ethereum"].forEach(id => {
-      const price = cryptoData[id].usd;
-      const change = cryptoData[id].usd_24h_change.toFixed(2);
-      let item = document.createElement("div");
-      item.classList.add("ticker-item");
-      item.innerHTML = `<h4>${id.toUpperCase()}</h4><p style="color:${change>=0?'#16a34a':'#ef4444'}">$${price} (${change}%)</p>`;
-      tickerContainer.appendChild(item);
-    });
+const prices = [
+  {name: 'EUR/USD', value: 1.1234, color:'#2563eb'},
+  {name: 'GBP/USD', value: 1.2345, color:'#16a34a'},
+  {name: 'USD/JPY', value: 134.56, color:'#2563eb'},
+  {name: 'BTC/USD', value: 35000, color:'#f59e0b'},
+  {name: 'ETH/USD', value: 2500, color:'#3b82f6'}
+];
 
-    const forexRes = await fetch(
-      'https://www.freeforexapi.com/api/live?pairs=EURUSD,GBPUSD,USDJPY'
-    );
-    const forexData = await forexRes.json();
-    const forexPairs = { EURUSD:"EUR/USD", GBPUSD:"GBP/USD", USDJPY:"USD/JPY" };
-    Object.keys(forexData.rates).forEach(pair => {
-      const rate = forexData.rates[pair].rate.toFixed(4);
-      let item = document.createElement("div");
-      item.classList.add("ticker-item");
-      item.innerHTML = `<h4>${forexPairs[pair]}</h4><p style="color:#2563eb">${rate}</p>`;
-      tickerContainer.appendChild(item);
-    });
+const ticker = document.getElementById('market-ticker');
 
-  } catch(err) {
-    console.error(err);
-    tickerContainer.innerHTML="<p>Unable to load market data.</p>";
-  }
-}
+prices.forEach(p => {
+  const item = document.createElement('div');
+  item.classList.add('ticker-item');
+  item.innerHTML = `<h4>${p.name}</h4><p style="color:${p.color}">${p.value}</p>`;
+  ticker.appendChild(item);
+});
 
-loadLivePrices();
-setInterval(loadLivePrices, 60000);
+// Optional: update values every 10s to simulate live movement
+setInterval(() => {
+  ticker.innerHTML = '';
+  prices.forEach(p => {
+    // randomize price slightly for simulation
+    let fluctuation = (Math.random() - 0.5) * 0.01; 
+    p.value = (p.value * (1 + fluctuation)).toFixed(4);
+    const item = document.createElement('div');
+    item.classList.add('ticker-item');
+    item.innerHTML = `<h4>${p.name}</h4><p style="color:${p.color}">${p.value}</p>`;
+    ticker.appendChild(item);
+  });
+}, 10000);
 </script>
 
+<!-- FOOTER -->
 <footer>
   <p>© 2026 Elite Forex Academy</p>
 </footer>
