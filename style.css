@@ -1,19 +1,34 @@
+/* =========================
+   GLOBAL RESET & VARIABLES
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #ffffff;
-  color: #111;
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --dark: #111111;
+  --green: #22c55e;
+  --red: #ef4444;
+  --orange: #f97316;
+  --gray: #f5f5f5;
 }
 
-/* NAVBAR */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* =========================
+   NAVBAR (ALL PAGES)
+========================= */
 .navbar {
-  background: #000;
-  color: #fff;
+  background: var(--black);
   padding: 18px 8%;
   display: flex;
   justify-content: space-between;
@@ -21,9 +36,9 @@ body {
 }
 
 .logo {
-  font-weight: bold;
   font-size: 1.4rem;
-  color: #22c55e;
+  font-weight: bold;
+  color: var(--green);
 }
 
 .nav-links {
@@ -34,136 +49,188 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #22c55e;
+  color: var(--green);
 }
 
 .nav-links .cta {
-  background: #f97316;
+  background: var(--orange);
   padding: 8px 16px;
   border-radius: 6px;
 }
 
-/* HERO */
-.hero {
-  background: #f5f5f5;
-  padding: 100px 10%;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero-content span {
-  color: #22c55e;
-}
-
-.hero-content p {
-  max-width: 600px;
-  font-size: 1.1rem;
-}
-
-.hero-buttons {
-  margin-top: 30px;
-}
-
+/* =========================
+   BUTTONS (REUSABLE)
+========================= */
 .btn {
   display: inline-block;
   padding: 14px 30px;
-  margin-right: 15px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 6px;
+  margin-top: 10px;
 }
 
-.btn.green {
-  background: #22c55e;
-  color: #fff;
+.btn.green { background: var(--green); color: var(--white); }
+.btn.orange { background: var(--orange); color: var(--white); }
+.btn.black { background: var(--black); color: var(--white); }
+
+.btn:hover {
+  opacity: 0.9;
 }
 
-.btn.orange {
-  background: #f97316;
-  color: #fff;
+/* =========================
+   PAGE HEADERS
+========================= */
+.page-header {
+  background: var(--gray);
+  padding: 80px 10%;
 }
 
-/* MARKET SNAPSHOT */
-.market-snapshot {
-  display: flex;
-  justify-content: center;
+.page-header h1 {
+  font-size: 2.6rem;
+}
+
+.page-header p {
+  max-width: 700px;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   SECTIONS (GLOBAL)
+========================= */
+section {
+  padding: 80px 10%;
+}
+
+.section-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.section-light {
+  background: var(--gray);
+}
+
+.section-center {
+  text-align: center;
+}
+
+/* =========================
+   CARDS / GRIDS
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 10px;
+  border-left: 5px solid var(--green);
+}
+
+.section-dark .card {
+  background: var(--dark);
+  border-left: 5px solid var(--orange);
+}
+
+/* =========================
+   MARKET DATA (MARKETS PAGE)
+========================= */
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
-  padding: 40px 10%;
-  background: #000;
 }
 
 .market-card {
-  background: #111;
+  background: var(--dark);
+  color: var(--white);
   padding: 20px;
-  color: #fff;
   border-radius: 8px;
-  min-width: 140px;
   text-align: center;
 }
 
-.up { color: #22c55e; }
-.down { color: #ef4444; }
+.up { color: var(--green); }
+.down { color: var(--red); }
 
-/* TOOLS */
-.tools {
-  padding: 80px 10%;
-  text-align: center;
+/* =========================
+   TABLES (PRICING / STATS)
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
 }
 
-.tool-grid {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 
-.tool-box {
-  background: #f9f9f9;
-  padding: 30px;
-  width: 300px;
-  border-left: 5px solid #22c55e;
+th {
+  background: var(--black);
+  color: var(--white);
 }
 
-/* BOT DETAILS */
-.bot-details {
-  background: #000;
-  color: #fff;
-  padding: 80px 10%;
-}
-
-.bot-details ul {
+/* =========================
+   LISTS (COURSES / FEATURES)
+========================= */
+ul.features {
   list-style: none;
-  margin: 30px 0;
+  margin-top: 20px;
 }
 
-.bot-details li {
+ul.features li {
   margin-bottom: 12px;
 }
 
-.disclaimer {
-  font-size: 0.85rem;
-  color: #ccc;
-}
-
-/* EDUCATION */
-.education {
-  padding: 80px 10%;
+/* =========================
+   CONTACT / CTA
+========================= */
+.cta-box {
+  background: var(--green);
+  color: var(--white);
+  padding: 50px;
   text-align: center;
+  border-radius: 12px;
 }
 
-/* FOOTER */
+.cta-box a {
+  color: var(--white);
+  font-weight: bold;
+}
+
+/* =========================
+   FOOTER (ALL PAGES)
+========================= */
 footer {
-  background: #000;
-  color: #fff;
+  background: var(--black);
+  color: var(--white);
   text-align: center;
   padding: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
 }
